@@ -1,0 +1,263 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #111;
+  color: #eee;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+/* URL form */
+#url-form {
+  display: flex;
+  gap: 8px;
+}
+
+#url-form input {
+  flex: 1;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: #eee;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#url-form input:focus {
+  border-color: #555;
+}
+
+#load-btn {
+  background: #fff;
+  color: #111;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+#load-btn:hover { opacity: 0.85; }
+#load-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Visual upload */
+#visual-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#visual-drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 180px;
+  border: 1px dashed #333;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.15s;
+}
+
+#visual-drop:hover { border-color: #555; }
+
+#visual-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+#visual-hint {
+  font-size: 0.8rem;
+  color: #555;
+  pointer-events: none;
+}
+
+#visual-clear {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.8rem;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+#visual-clear:hover { color: #aaa; }
+
+/* Visualizer */
+#visualizer {
+  width: 100%;
+  height: 80px;
+  border-radius: 6px;
+  background: #1a1a1a;
+}
+
+/* Progress bar */
+#progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#progress-label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+#progress-track {
+  width: 100%;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+#progress-pct {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+/* Status */
+#status {
+  font-size: 0.85rem;
+  color: #888;
+  min-height: 1.2em;
+}
+
+#disclaimer {
+  font-size: 0.75rem;
+  color: #444;
+}
+
+/* Player section */
+.hidden { display: none; }
+
+#player-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Controls */
+#controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#play-pause {
+  background: none;
+  border: 1px solid #444;
+  color: #eee;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+#play-pause:hover { border-color: #aaa; color: #fff; }
+
+/* Seek bar */
+#seek-bar {
+  flex: 1;
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+#time-label {
+  font-size: 0.8rem;
+  color: #888;
+  white-space: nowrap;
+}
+
+/* Sliders */
+#sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slider-row label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.slider-row input[type="range"] {
+  width: 100%;
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+/* Download button */
+#download-btn {
+  background: none;
+  border: 1px solid #444;
+  color: #888;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#download-btn:hover { border-color: #aaa; color: #eee; }
+#download-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+#export-video-btn {
+  background: none;
+  border: 1px solid #444;
+  color: #888;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#export-video-btn:hover { border-color: #aaa; color: #eee; }
+#export-video-btn:disabled { opacity: 0.4; cursor: not-allowed; }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Adjuster</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main>
+      <h1>Speed Adjuster</h1>
+
+      <form id="url-form">
+        <input type="text" name="submit" id="submit" placeholder="Paste a YouTube link..." autocomplete="off"/>
+        <button type="submit" id="load-btn">Load</button>
+      </form>
+
+      <div id="visual-section">
+        <label id="visual-drop" for="visual-input">
+          <img id="visual-preview" class="hidden"/>
+          <span id="visual-hint">Drop image or GIF here, or click to browse</span>
+        </label>
+        <input type="file" id="visual-input" accept="image/*,.gif" style="display:none"/>
+        <button id="visual-clear" class="hidden">Remove</button>
+      </div>
+
+      <div id="player-section" class="hidden">
+        <canvas id="visualizer"></canvas>
+        <div id="controls">
+          <button id="play-pause">Play</button>
+          <input type="range" id="seek-bar" min="0" max="100" step="0.1" value="0"/>
+          <span id="time-label">0:00</span>
+          <button id="download-btn">Download WAV</button>
+          <button id="export-video-btn">Export MP4</button>
+        </div>
+
+        <div id="sliders">
+          <div class="slider-row">
+            <label>Speed: <span id="speed-label">1.00x</span></label>
+            <input type="range" id="speed-slider" min="0.5" max="2" step="0.01" value="1"/>
+          </div>
+          <div class="slider-row">
+            <label>Pitch: <span id="pitch-label">0 st</span></label>
+            <input type="range" id="pitch-slider" min="-12" max="12" step="1" value="0"/>
+          </div>
+          <div class="slider-row">
+            <label>Bass Boost: <span id="bass-label">0 dB</span></label>
+            <input type="range" id="bass-slider" min="0" max="20" step="1" value="0"/>
+          </div>
+          <div class="slider-row">
+            <label>Reverb: <span id="reverb-label">0%</span></label>
+            <input type="range" id="reverb-slider" min="0" max="1" step="0.01" value="0"/>
+          </div>
+          <div class="slider-row">
+            <label>Distortion: <span id="distortion-label">0%</span></label>
+            <input type="range" id="distortion-slider" min="0" max="1" step="0.01" value="0"/>
+          </div>
+        </div>
+      </div>
+
+      <div id="progress-wrap" class="hidden">
+        <div id="progress-label">Rendering...</div>
+        <div id="progress-track">
+          <div id="progress-bar"></div>
+        </div>
+        <div id="progress-pct">0%</div>
+      </div>
+
+      <p id="status"></p>
+      <p id="disclaimer">For personal use only. You are responsible for ensuring you have the right to download and modify any content.</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/tone@14/build/Tone.js"></script>
+    <script src="/static/index.js"></script>
+  </body>
+</html>
