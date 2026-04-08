@@ -70,13 +70,15 @@ def primary_logic():
         ydl_opts = {
             "outtmpl": os.path.join(job_dir, "%(title)s.%(ext)s"),
             'format': 'm4a/bestaudio/best',
-            'ffmpeg_location': FFMPEG_PATH,
             'noplaylist': True,
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'm4a',
-            }]
+            }],
+            'js_runtimes': ['node'],
         }
+        if FFMPEG_PATH:
+            ydl_opts['ffmpeg_location'] = FFMPEG_PATH
         if COOKIES_PATH:
             ydl_opts['cookiefile'] = COOKIES_PATH
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
