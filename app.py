@@ -121,16 +121,18 @@ def export_video():
                 os.path.join(FFMPEG_PATH, "ffmpeg"), "-y",
                 *loop_flag, "-i", visual_path,
                 "-i", audio_path,
-                "-shortest", "-c:v", "libx264", "-c:a", "aac",
-                "-pix_fmt", "yuv420p", "-progress", "pipe:1", "-nostats", output_path
+                "-shortest", "-c:v", "libx264", "-c:a", "aac", "-b:a", "192k",
+                "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+                "-progress", "pipe:1", "-nostats", output_path
             ]
         else:
             cmd = [
                 os.path.join(FFMPEG_PATH, "ffmpeg"), "-y",
                 "-f", "lavfi", "-i", "color=c=black:s=1280x720",
                 "-i", audio_path,
-                "-shortest", "-c:v", "libx264", "-c:a", "aac",
-                "-pix_fmt", "yuv420p", "-progress", "pipe:1", "-nostats", output_path
+                "-shortest", "-c:v", "libx264", "-c:a", "aac", "-b:a", "192k",
+                "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+                "-progress", "pipe:1", "-nostats", output_path
             ]
 
         def generate():
