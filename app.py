@@ -76,7 +76,7 @@ def primary_logic():
                 'preferredcodec': 'm4a',
             }],
             'js_runtimes': {'node': {}},
-            'allow_remote_components': True,
+            'remote_components': ['ejs:github'],
         }
         if FFMPEG_PATH:
             ydl_opts['ffmpeg_location'] = FFMPEG_PATH
