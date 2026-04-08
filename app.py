@@ -75,7 +75,7 @@ def primary_logic():
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'm4a',
             }],
-            'js_runtimes': ['node'],
+            'js_runtimes': {'node': {}},
         }
         if FFMPEG_PATH:
             ydl_opts['ffmpeg_location'] = FFMPEG_PATH
