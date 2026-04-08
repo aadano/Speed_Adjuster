@@ -75,7 +75,11 @@ def primary_logic():
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'm4a',
             }],
-            'js_runtimes': {'node': {}},
+            'extractor_args': {
+                'youtube': {
+                    'player_client': ['tv_embedded', 'ios']
+                }
+            },
         }
         if FFMPEG_PATH:
             ydl_opts['ffmpeg_location'] = FFMPEG_PATH
