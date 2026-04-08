@@ -18,8 +18,16 @@ if not app.secret_key:
     raise RuntimeError("SECRET_KEY environment variable is not set")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Write cookies from env var to a file if provided
+COOKIES_PATH = None
+_cookies_content = os.environ.get('YOUTUBE_COOKIES')
+if _cookies_content:
+    COOKIES_PATH = os.path.join(BASE_DIR, "cookies.txt")
+    with open(COOKIES_PATH, 'w') as f:
+        f.write(_cookies_content)
 DOWNLOAD_DIR = os.path.join(BASE_DIR, "downloads")
-FFMPEG_PATH = os.environ.get('FFMPEG_PATH', r'C:\Users\aadano\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1-full_build\bin')
+FFMPEG_PATH = os.environ.get('FFMPEG_PATH', '')
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB upload limit
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
@@ -67,8 +75,15 @@ def primary_logic():
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'm4a',
-            }]
+            }],
+            'extractor_args': {
+                'youtubepot-bgutilhttp': {
+                    'base_url': ['http://127.0.0.1:4416']
+                }
+            }
         }
+        if COOKIES_PATH:
+            ydl_opts['cookiefile'] = COOKIES_PATH
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(linky, download=True)
             filepath = info["requested_downloads"][0]["filepath"]
