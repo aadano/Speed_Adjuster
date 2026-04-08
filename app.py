@@ -75,12 +75,7 @@ def primary_logic():
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'm4a',
-            }],
-            'extractor_args': {
-                'youtubepot-bgutilhttp': {
-                    'base_url': ['http://127.0.0.1:4416']
-                }
-            }
+            }]
         }
         if COOKIES_PATH:
             ydl_opts['cookiefile'] = COOKIES_PATH

@@ -10,9 +10,6 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Install bgutil pot server
-RUN npm install -g @bunburya/bgutil-ytdlp-pot-provider
-
 # Install Python deps
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
